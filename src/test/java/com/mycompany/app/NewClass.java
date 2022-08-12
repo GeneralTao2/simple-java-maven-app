@@ -5,4 +5,5 @@ public class NewClass {
 
     private int d;
 
+
 }
