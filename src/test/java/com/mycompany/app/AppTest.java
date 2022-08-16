@@ -20,6 +20,7 @@ public class AppTest
     }
 
     @Test
+
     public void testAppConstructor() {
         try {
             new App();
