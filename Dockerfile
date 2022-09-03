@@ -1,4 +1,4 @@
 FROM openjdk:11
-ADD target/simple-java-maven-app-1.0-SNAPSHOT.jar simple-java-maven-app-1.0-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar","simple-java-maven-app-1.0-SNAPSHOT.jar"]
+ADD /var/artifacts/simple-java-maven-app.jar simple-java-maven-app.jar
+ENTRYPOINT ["java", "-jar","simple-java-maven-app.jar"]
 EXPOSE 9000
