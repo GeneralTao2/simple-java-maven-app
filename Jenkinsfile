@@ -46,7 +46,7 @@ pipeline {
                         def buildArgs = """\
                             -f Dockerfile \
                             ."""
-                        def image.docker.build(
+                        def image = docker.build(
                             "${params.Image_Name}:${params.Image_Tag}",
                             buildArgs)
                         image.run()
