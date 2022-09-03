@@ -44,7 +44,7 @@ pipeline {
         stage("Build docker images") {
             agent {
                 node {
-                    label 'simple-java-maven-app'
+                    label 'Built-In Node'
                 }
             }
             steps {
