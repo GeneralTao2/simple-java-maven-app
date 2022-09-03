@@ -46,7 +46,6 @@ pipeline {
                 node {
                     label 'built-in'
                 }
-                reuseNode true
             }
             steps {
                 script {
