@@ -1,4 +1,4 @@
 FROM openjdk:11
-ADD target/my-app-1.0-SNAPSHOT.jar my-app-1.0-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar","my-app-1.0-SNAPSHOT.jar"]
+ADD target/simple-java-maven-app-1.0-SNAPSHOT.jar simple-java-maven-app-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar","simple-java-maven-app-1.0-SNAPSHOT.jar"]
 EXPOSE 9000
