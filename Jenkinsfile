@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.8.1-adoptopenjdk-11'
+            args '-v /root/.m2:/root/.m2'
+            reuseNode true
+        }
+    }
     options {
         skipStagesAfterUnstable()
         buildDiscarder(logRotator(numToKeepStr: '30'))
@@ -29,25 +35,12 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'maven:3.8.1-adoptopenjdk-11'
-                    args '-v /root/.m2:/root/.m2'
-                    reuseNode true
-                }
-            }
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
 
         stage("Build docker images") {
-            agent {
-                node {
-                    label 'built-in'
-                }
-                reuseNode true
-            }
             steps {
                 script {
                     echo "Bulding docker images"
