@@ -2,8 +2,8 @@ pipeline {
     agent {
         docker {
             image 'maven:3.8.1-adoptopenjdk-11'
-            args '-v /root/.m2:/root/.m2
-                  -v $(which docker):/usr/bin/docker
+            args '-v /root/.m2:/root/.m2 \
+                  -v $(which docker):/usr/bin/docker \
                   -v /var/run/docker.sock:/var/run/docker.sock'
             reuseNode true
         }
