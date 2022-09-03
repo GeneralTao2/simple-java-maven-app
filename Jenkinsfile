@@ -49,7 +49,7 @@ pipeline {
                         def image = docker.build(
                             "${params.Image_Name}:${params.Image_Tag}",
                             buildArgs)
-                        image.run("${params.Image_Name}", "-p 9000:9000")
+                        image.run("-p 9000:9000", "${params.Image_Name}")
                 }
             }
         }
