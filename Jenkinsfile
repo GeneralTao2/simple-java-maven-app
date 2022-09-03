@@ -44,7 +44,7 @@ pipeline {
         stage("Build docker images") {
             agent {
                 node {
-                    label 'Built-In Node'
+                    label 'built-in'
                 }
             }
             steps {
