@@ -32,19 +32,26 @@ pipeline {
            defaultValue: false)
     }
 
-
-
     stages {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Deliver') {
+
+        stage("Build docker images") {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                script {
+                    echo "Bulding docker images"
+                        def buildArgs = """\
+                            -f Dockerfile \
+                            ."""
+                        def image = docker.build(
+                            "${params.Image_Name}:${params.Image_Tag}",
+                            buildArgs)
+                        image.run()
+                }
             }
         }
-
     }
 }
