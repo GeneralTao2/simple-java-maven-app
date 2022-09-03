@@ -50,7 +50,6 @@ pipeline {
                             "${params.Image_Name}:${params.Image_Tag}",
                             buildArgs)
                         image.run()
-                        docker.
                 }
             }
         }
