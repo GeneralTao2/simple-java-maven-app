@@ -13,24 +13,24 @@ pipeline {
 
     parameters {
         string(
-        name: "Branch_Name",
-        defaultValue: 'master',
-        description: '')
+            name: "Branch_Name",
+            defaultValue: 'master',
+            description: '')
 
         string(
-        name: "Image_Name",
-        defaultValue: 'generaltao725/simple-java-maven-app',
-        description: '')
+            name: "Image_Name",
+            defaultValue: 'generaltao725/simple-java-maven-app',
+            description: '')
 
         string(
-        name: "Image_Tag",
-        defaultValue: 'latest',
-        description: 'Image tag')
+            name: "Image_Tag",
+            defaultValue: 'latest',
+            description: 'Image tag')
 
         booleanParam(
            name: "PushImage",
            defaultValue: false)
-        }
+    }
 
     stages {
         stage('Build') {
@@ -40,15 +40,17 @@ pipeline {
         }
 
         stage("Build docker images") {
-             steps {
+            steps {
                 script {
                     echo "Bulding docker images"
-                    def buildArgs = """\
-                        -f Dockerfile \
-                        ."""
-                    docker.build(
-                       "${params.Image_Name}:${params.Image_Tag}",
-                       buildArgs)
+                        def buildArgs = """\
+                            -f Dockerfile \
+                            ."""
+                        docker.build(
+                            "${params.Image_Name}:${params.Image_Tag}",
+                            buildArgs)
                 }
+            }
+        }
     }
 }
