@@ -45,6 +45,7 @@ pipeline {
             agent {
                 node {
                     label 'built-in'
+                    reuseNode true
                 }
             }
             steps {
