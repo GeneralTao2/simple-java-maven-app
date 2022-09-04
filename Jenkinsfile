@@ -56,19 +56,19 @@ pipeline {
         stage("Push to Dockerhub") {
             when { equals expected: 2, actual: 2 }
                 steps {
-                script {
-                    echo "Pushing the image to docker hub"
-                    def localImage = "${params.Image_Name}:${params.Image_Tag}"
-                    def repositoryName = "generaltao725/${localImage}"
+                    script {
+                        echo "Pushing the image to docker hub"
+                        def localImage = "${params.Image_Name}:${params.Image_Tag}"
+                        def repositoryName = "generaltao725/${localImage}"
 
-                    sh "docker tag ${localImage} ${repositoryName} "
+                        sh "docker tag ${localImage} ${repositoryName} "
 
-                    docker.withRegistry("", "DockerHubCredentials") {
-                        def image = docker.image("${repositoryName}");
-                        image.push()
+                        docker.withRegistry("", "DockerHubCredentials") {
+                            def image = docker.image("${repositoryName}");
+                            image.push()
+                    }
                 }
             }
         }
     }
-
 }
