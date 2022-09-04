@@ -29,7 +29,7 @@ pipeline {
 
         booleanParam(
            name: "PushImage",
-           defaultValue: false)
+           defaultValue: true)
     }
 
     stages {
