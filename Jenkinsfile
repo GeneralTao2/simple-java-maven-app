@@ -53,7 +53,7 @@ pipeline {
             }
         }
         stage("Push to Dockerhub") {
-            when { equals expected: 2, actual: 2 }
+            when { equals expected: "true", actual: "true" }
                 steps {
                     script {
                         echo "Pushing the image to docker hub"
