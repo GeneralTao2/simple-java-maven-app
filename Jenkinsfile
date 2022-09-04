@@ -19,7 +19,7 @@ pipeline {
 
         string(
             name: "Image_Name",
-            defaultValue: 'generaltao725/simple-java-maven-app',
+            defaultValue: 'simple-java-maven-app',
             description: '')
 
         string(
