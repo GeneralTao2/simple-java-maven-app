@@ -33,7 +33,11 @@ pipeline {
     }
 
     stages {
-
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
 
         stage("Build docker images") {
             steps {
@@ -61,19 +65,11 @@ pipeline {
 
                     sh "docker tag ${localImage} ${repositoryName} "
 
-                }
-            }
-        }
-    }
-    post {
-        always {
-            script {
-                echo 'I will always say Hello again!'
-                    def localImage = "${params.Image_Name}"
-                    sh "docker rmi -f generaltao725/${localImage} ${localImage}"
-                    sh "docker system prune -f"
-                    sh "docker images"
+                    sh "docker rmi -f generaltao725/${repositoryName} "
+                    sh "docker rmi -f ${repositoryName} "
 
+
+                }
             }
         }
     }
