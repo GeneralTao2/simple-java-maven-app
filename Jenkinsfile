@@ -65,8 +65,12 @@ pipeline {
 
                     sh "docker tag ${localImage} ${repositoryName} "
 
-                    sh "docker rmi -f generaltao725/${repositoryName} "
-                    sh "docker rmi -f ${repositoryName} "
+                    docker.withRegistry("", "DockerHubCredentials") {
+                        def image = docker.image("${repositoryName}");
+                        image.push()
+                        sh "docker rmi -f generaltao725/${repositoryName} "
+                        sh "docker rmi -f ${repositoryName} "
+                    }
 
 
                 }
