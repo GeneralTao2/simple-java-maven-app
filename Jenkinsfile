@@ -69,7 +69,7 @@ pipeline {
                     sh "docker rmi -f ${repositoryName} "
                     sh "docker rmi -f $(docker images -q -f dangling=true) "
                     sh "docker rmi -f ${repositoryName} "
-
+                    sh "docker rmi -f generaltao725/${repositoryName} "
                 }
             }
         }
