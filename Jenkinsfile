@@ -70,8 +70,8 @@ pipeline {
                         image.push()
                     }
 
-                    sh "docker rmi -f ${repositoryName} "
                     sh "docker rmi -f generaltao725/${repositoryName} "
+                    sh "docker rmi -f ${repositoryName} "
                 }
             }
         }
