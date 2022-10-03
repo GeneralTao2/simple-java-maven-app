@@ -68,14 +68,14 @@ pipeline {
                 }
             }
         }
-         post {
-            always {
-                def localImage = "${params.Image_Name}:${params.Image_Tag}"
-                def repositoryName = "generaltao725/${localImage}"
+    }
+    post {
+        always {
+            def localImage = "${params.Image_Name}:${params.Image_Tag}"
+            def repositoryName = "generaltao725/${localImage}"
 
-                sh "docker rmi -f generaltao725/${repositoryName} ${localImage} > /tmp/logs"
+            sh "docker rmi -f generaltao725/${repositoryName} ${localImage} > /tmp/logs"
 
-            }
         }
     }
 }
