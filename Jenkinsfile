@@ -68,7 +68,7 @@ pipeline {
                 }
             }
         }
-         post("Cleanup") {
+         post {
             always {
                 def localImage = "${params.Image_Name}:${params.Image_Tag}"
                 def repositoryName = "generaltao725/${localImage}"
