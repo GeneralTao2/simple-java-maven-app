@@ -71,6 +71,7 @@ pipeline {
     }
     post {
         always {
+            echo 'I will always say Hello again!'
             def localImage = "${params.Image_Name}:${params.Image_Tag}"
             def repositoryName = "generaltao725/${localImage}"
 
