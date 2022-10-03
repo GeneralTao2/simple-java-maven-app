@@ -71,11 +71,13 @@ pipeline {
     }
     post {
         always {
-            echo 'I will always say Hello again!'
-            def localImage = "${params.Image_Name}:${params.Image_Tag}"
-            def repositoryName = "generaltao725/${localImage}"
+            script {
+                echo 'I will always say Hello again!'
+                            def localImage = "${params.Image_Name}:${params.Image_Tag}"
+                            def repositoryName = "generaltao725/${localImage}"
 
-            sh "docker rmi -f generaltao725/${repositoryName} ${localImage} > /tmp/logs"
+                            sh "docker rmi -f generaltao725/${repositoryName} ${localImage} > /tmp/logs"
+            }
 
         }
     }
