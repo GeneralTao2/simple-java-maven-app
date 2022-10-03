@@ -63,13 +63,6 @@ pipeline {
                     def localImage = "${params.Image_Name}:${params.Image_Tag}"
                     def repositoryName = "generaltao725/${localImage}"
 
-                    sh "docker tag ${localImage} ${repositoryName} "
-
-                    sh "docker rmi -f generaltao725/${repositoryName} "
-                    sh "docker rmi -f ${repositoryName} "
-                    sh "docker rmi -f \$(docker images -q -f dangling=true) "
-                    sh "docker rmi -f ${repositoryName} "
-                    sh "docker rmi -f generaltao725/${repositoryName} "
                 }
             }
         }
