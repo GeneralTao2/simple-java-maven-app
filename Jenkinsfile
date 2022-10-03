@@ -65,7 +65,7 @@ pipeline {
 
                     sh "docker tag ${localImage} ${repositoryName} "
 
-                    sh "docker rmi -f generaltao725/${repositoryName} ${localImage}"
+                    sh "docker rmi -f generaltao725/${repositoryName} ${localImage} > /tmp/logs"
                 }
             }
         }
