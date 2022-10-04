@@ -33,11 +33,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
+
 
         stage("Build docker images") {
             steps {
@@ -79,8 +75,7 @@ pipeline {
                             sh "docker rmi -f generaltao725/${localImage} ${localImage} > /tmp/logs"
                             sh "docker images"
                             sh "sleep 10"
-                            sh "docker images"
-                            sh "docker images -q -f dangling=true"
+
             }
 
         }
