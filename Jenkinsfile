@@ -77,7 +77,7 @@ pipeline {
                             def repositoryName = "generaltao725/${localImage}"
                             sh "docker images"
                             sh "docker rmi -f generaltao725/${localImage} ${localImage} > /tmp/logs"
-                            sh "sleep 1"
+                            sh "sleep 5"
             }
 
         }
