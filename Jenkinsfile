@@ -77,7 +77,6 @@ pipeline {
                             def repositoryName = "generaltao725/${localImage}"
 
                             sh "docker rmi -f generaltao725/${localImage} ${localImage} > /tmp/logs"
-                            sh "docker rmi -f \$(docker images -q -f dangling=true) "
             }
 
         }
