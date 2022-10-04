@@ -78,7 +78,6 @@ pipeline {
                             sh "docker images"
                             sh "docker rmi -f generaltao725/${localImage} ${localImage} > /tmp/logs"
                             sh "docker images"
-                            sh "sleep 10"
                             sh "docker images"
                             sh "docker images -q -f dangling=true"
             }
