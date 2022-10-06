@@ -69,11 +69,11 @@ pipeline {
         always {
             script {
                 echo 'I will always say Hello again!'
-
-
-
                     def localImage = "${params.Image_Name}:${params.Image_Tag}"
                     sh "docker rmi -f generaltao725/${localImage} ${localImage}"
+                    sh "docker system prune"
+                    sh "docker images"
+
             }
         }
     }
