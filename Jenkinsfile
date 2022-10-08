@@ -68,8 +68,12 @@ pipeline {
 
                     docker.withRegistry("", "DockerHubCredentials") {
                         def image = docker.image("${repositoryName}");
-                        image.push()
-
+                        try {
+                            image.push()
+                        } catch(Exception ex) {
+                            println(ex);
+                            image.push()
+                        }
                     }
 
                     sh "docker rmi -f ${localImage} "
