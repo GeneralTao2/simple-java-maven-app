@@ -10,6 +10,6 @@ public class Ctr {
 
     @GetMapping("/get")
     public String test() {
-        return "Test!123";
+        return "Test!123 Finally!";
     }
 }
