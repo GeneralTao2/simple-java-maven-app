@@ -72,7 +72,6 @@ pipeline {
 
                     }
 
-
                     sh "docker rmi -f ${localImage} "
                     sh "docker rmi -f ${repositoryName} "
 
