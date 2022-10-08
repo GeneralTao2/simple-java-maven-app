@@ -65,6 +65,7 @@ pipeline {
 
                     sh "docker tag ${localImage} ${repositoryName} "
 
+
                     docker.withRegistry("", "DockerHubCredentials") {
                         def image = docker.image("${repositoryName}");
                         image.push()
