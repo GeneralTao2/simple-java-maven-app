@@ -34,7 +34,7 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Build JAR file') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
@@ -43,7 +43,7 @@ pipeline {
         stage("Build docker images") {
             steps {
                 script {
-                    echo "Bulding docker images"
+                    echo "Build docker images"
                         def buildArgs = """\
                             -f Dockerfile \
                             ."""
@@ -53,6 +53,7 @@ pipeline {
                 }
             }
         }
+
         stage("Push to Dockerhub") {
             when {
                 equals expected: "true",
@@ -66,7 +67,6 @@ pipeline {
 
                     sh "docker tag ${localImage} ${repositoryName} "
 
-
                     docker.withRegistry("", "DockerHubCredentials") {
                         def image = docker.image("${repositoryName}");
                         try {
@@ -77,10 +77,8 @@ pipeline {
                         }
                     }
 
-
                     sh "docker rmi -f ${localImage} "
                     sh "docker rmi -f ${repositoryName} "
-
                 }
             }
         }
